@@ -1,7 +1,12 @@
 .side-menu {
   position: fixed;
-  background-color: red;
-  width: 0px;
+  /* background-color: red; */
+  width: 300px;
   left: 0;
-  height: 100vh;
+  top: 0;
+  height: 100%;
+}
+
+.menu-item {
+  padding: 5px;
 }
