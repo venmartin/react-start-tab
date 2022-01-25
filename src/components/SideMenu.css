@@ -1,0 +1,7 @@
+.side-menu {
+  position: fixed;
+  background-color: red;
+  width: 0px;
+  left: 0;
+  height: 100vh;
+}

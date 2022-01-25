@@ -1,0 +1,11 @@
+.weather-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  height: 75px;
+  width: 200px;
+}

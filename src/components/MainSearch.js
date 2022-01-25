@@ -53,7 +53,7 @@ const MainSearch = () => {
        Google
     </button>
     <button onClick={ddgEngine}>
-      Qwant
+      DuckDuckGo
     </button>
         <form onSubmit={handleSubmit}>
           <input

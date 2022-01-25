@@ -1,0 +1,25 @@
+.date-time-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 20px;
+  width: 270px;
+}
+
+.clock,
+.date {
+  text-align: end;
+  padding: 3px;
+}
+
+.clock {
+  font-size: 4rem;
+}
+
+.date {
+  font-size: 1.3rem;
+}
