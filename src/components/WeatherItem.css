@@ -1,11 +1,20 @@
 .weather-item {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: fixed;
   bottom: 0;
   left: 0;
   padding: 20px;
   height: 75px;
   width: 200px;
+}
+
+.weather-name {
+  font-size: 1.5rem;
+}
+
+.weather-temp {
+  font-size: 3rem;
 }
