@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 const MainSearch = () => {
@@ -7,35 +7,22 @@ const MainSearch = () => {
   const [ engineName, setEngineName ] = useState('');
   const [ engine, setEngine ] = useState('')
 
-  // const handleSubmit = (e) => {
-  //   if(engineName === 'Google') {
-  //     setEngine(`https://www.google.com/search?q=${searchValue}`)
-  //     console.log(engine)
-  //     window.open(engine)
-  //   } else if(engineName === 'Qwant') {
-  //     setEngine(`https://www.google.com/search?q=${searchValue}`)
-  //     console.log(engine)
-  //     window.open(engine)
-  //   } else {
-  //     alert('Select a search engine first');
-  //   }
-  //   e.preventDefault()
-  // }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    window.open(engine)
-  }
-
   const googleEngine = () => {
     setEngineName(...engineName, 'google')
-    setEngine(`https://www.google.com/search?q=${searchValue}`)
-    return
+    setEngine(`https://google.com/search?tbm=isch`)
+
   }
 
   const ddgEngine = () => {
     setEngineName(...engineName, 'ddg')
-    setEngine(`https://www.duckduckgo.com/?q=${searchValue}`)
+    setEngine(`https://www.duckduckgo.com/`)
+    return
+    
+  }
+  
+  const braveEngine = () => {
+    setEngineName(...engineName, 'brave')
+    setEngine(`https://search.brave.com/search`)
     return
     
   }
@@ -44,8 +31,12 @@ const MainSearch = () => {
     const searchTerm = e.target.value
     setSearchValue(searchTerm)
     console.log(searchValue)
-    return
   }
+
+  useEffect(() => {
+    
+  }, [handleChange]);
+  
 
   return <div>
     <h2>Search Bar</h2>
@@ -55,12 +46,15 @@ const MainSearch = () => {
     <button onClick={ddgEngine}>
       DuckDuckGo
     </button>
-        <form onSubmit={handleSubmit}>
+    <button onClick={braveEngine}>
+      Brave
+    </button>
+        <form action={engine} target='_blank'>
           <input
           type='text'
-          name={engineName}
+          name='q'
           placeholder='Search'
-          value={searchValue}
+          // value={searchValue}
           onChange={handleChange}
           >
           </input>
