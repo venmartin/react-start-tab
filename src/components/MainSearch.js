@@ -54,7 +54,6 @@ const MainSearch = () => {
           type='text'
           name='q'
           placeholder='Search'
-          // value={searchValue}
           onChange={handleChange}
           >
           </input>
