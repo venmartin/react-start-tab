@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container } from '@mui/material';
 import './App.css';
 import MainSearch from './components/MainSearch';
@@ -7,12 +7,43 @@ import Time from './components/Time';
 import WeatherItem from './components/WeatherItem';
 
 function App() {
+  const [ isMenuOpen, setIsMenuOpen ] = useState(false)
+  const [ isUnit, setIsUnit ] = useState(true)
+  const [ is24hour, setIs24Hour] = useState(true)
+  
+  
+  // Control of the side menu
+
+  const menuToggle = () => {
+    setIsMenuOpen(!isMenuOpen)
+      console.log(isMenuOpen)
+    
+  }
+
+  const unitToggle = () => {
+    setIsUnit(!isUnit)
+  }
+
+  // End Side Menu
+
+  // Control of the clock toggle for 12h to 24h.
+  const toggleHours = () => {
+    if(is24hour === is24hour) {
+    setIs24Hour(!is24hour)
+    console.log(is24hour)
+   }
+  }
+
+
+
+
+
   return (
     <div className="App">
-      <SideMenu />
+      <SideMenu menuToggle={menuToggle} isOpen={isMenuOpen} />
       <MainSearch />
       <Time />
-      <WeatherItem />
+      <WeatherItem menuOpen={isMenuOpen} unitToggle={unitToggle} isUnit={isUnit}/>
     </div>
   );
 }

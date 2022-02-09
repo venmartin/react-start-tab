@@ -2,19 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './WeatherItem.css'
 
-const WeatherItem = () => {
+const WeatherItem = ({ menuOpen, unitToggle, isUnit }) => {
   const [ weather, setWeather ] = useState([])
-  const [ unit, setUnit ] = useState(true)
-  // const [ unitConvert, setUnitConvert ] = useState('metric')
   const [ longitude, setLongitude ] = useState()
   const [ latitude, setLatitude ] = useState()
 
   // let lon = ''
   // let lat = ''
-
-  const unitToggle = () => {
-    setUnit(!unit)
-  }
 
   const getGeolocation = () => {
     if(navigator.geolocation) {
@@ -64,10 +58,10 @@ const WeatherItem = () => {
 
   
   return ( 
-    <div className='weather-item'>
+    <div className={ menuOpen ? 'weather-item weather-item-open' : 'weather-item'}>
       <span className='weather-name'>{weather ? weather.name : "no name"}</span> 
       <span className='weather-temp'>
-        { unit ? (
+        { isUnit ? (
           weather.main ? Math.round(weather.main.temp - 273.15)+'°C' : '0')
           : weather.main ? Math.round(weather.main.temp * 1.8 - 459.67)+'°F' : '0'
         }

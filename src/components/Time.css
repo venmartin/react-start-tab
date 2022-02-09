@@ -1,13 +1,13 @@
 .date-time-box {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   flex-direction: column;
   position: fixed;
   bottom: 0;
   right: 0;
   padding: 20px;
-  width: 270px;
+  width: 300px;
 }
 
 .clock,

@@ -5,7 +5,7 @@ import './Time.css'
 const Time = () => {
   const [ timeState, setTimeState ] = useState()
   const [ dateState, setDateState ] = useState()
-  const [ is24hour, setIs24hour ] = useState(true)
+  const [ is24hour, setIs24hour ] = useState(true)  
 
   function addZero(num) {
     return (parseInt(num, 10) < 10 ? '0' : '') + num;
@@ -27,8 +27,9 @@ const Time = () => {
 
     if(clockHours === true) {
       hours = hours % 12
-      hours = hours ? hours : 12
-    } 
+    } else {
+      hours = hours || 12
+    }
     
    const time = `${hours}:${addZero(mins)} ${amPm}`
       setTimeState(time)
@@ -37,6 +38,11 @@ const Time = () => {
   };
   
   setInterval(clock, 1000)
+
+  useEffect(() => {
+        
+  }, []);
+  
   
   return (
     <div className='date-time-box'>
