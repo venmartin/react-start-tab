@@ -30,13 +30,14 @@
   text-indent: 15px;
   height: 30px;
   border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.158);
 }
 
 .search-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 700px;
+  width: 100%;
   
 }
 
@@ -54,4 +55,10 @@
 .search-submit svg:hover {
   fill: rgba(0, 0, 0, 0.411);
   transition: ease-in-out 0.3s;
+}
+
+@media screen and (max-width: 700px) {
+  .search-bar {
+    width: 300px;
+  }
 }
