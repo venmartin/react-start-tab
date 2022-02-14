@@ -10,7 +10,7 @@ function App() {
   const [ isMenuOpen, setIsMenuOpen ] = useState(false)
   const [ isUnit, setIsUnit ] = useState(true)
   const [ is24hour, setIs24Hour] = useState(true)
-  
+  const [ degrees, setDegrees ] = useState('Celcius')
   
   // Control of the side menu
 
@@ -22,6 +22,12 @@ function App() {
 
   const unitToggle = () => {
     setIsUnit(!isUnit)
+    if (isUnit === true) {
+      setDegrees('Fahrenheit')
+    } else {
+      setDegrees('Celcius')
+      
+    }
   }
 
   // End Side Menu
@@ -43,7 +49,7 @@ function App() {
       <SideMenu menuToggle={menuToggle} isOpen={isMenuOpen} />
       <MainSearch />
       <Time />
-      <WeatherItem menuOpen={isMenuOpen} unitToggle={unitToggle} isUnit={isUnit}/>
+      <WeatherItem menuOpen={isMenuOpen} unitToggle={unitToggle} isUnit={isUnit} degrees={degrees}/>
     </div>
   );
 }
