@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './WeatherItem.css'
 
-const WeatherItem = ({ menuOpen, unitToggle, isUnit }) => {
+const WeatherItem = ({ menuOpen, unitToggle, isUnit, degrees, weatherModal }) => {
   const [ weather, setWeather ] = useState([])
   const [ longitude, setLongitude ] = useState()
   const [ latitude, setLatitude ] = useState()
@@ -58,7 +58,7 @@ const WeatherItem = ({ menuOpen, unitToggle, isUnit }) => {
 
   
   return ( 
-    <div className={ menuOpen ? 'weather-item weather-item-open' : 'weather-item'}>
+    <div className={ menuOpen ? 'weather-item weather-item-open' : 'weather-item'} onClick={weatherModal}>
       <span className='weather-name'>{weather ? weather.name : "no name"}</span> 
       <span className='weather-temp'>
         { isUnit ? (
@@ -68,7 +68,7 @@ const WeatherItem = ({ menuOpen, unitToggle, isUnit }) => {
         
       </span>
 
-      <button onClick={unitToggle}>C | F</button>
+      <button className='toggle-btn' onClick={unitToggle}>{degrees}</button>
     </div>
     )
 };
