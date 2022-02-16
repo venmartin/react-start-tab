@@ -25,11 +25,11 @@ const Time = () => {
     const clockHours = is24hour
       let amPm = is24hour ? (hours >= 12 ? 'PM' : 'AM') : ''
 
-    if(clockHours === true) {
-      hours = hours % 12
-    } else {
-      hours = hours || 12
-    }
+    // if(clockHours === true) {
+    //   hours = hours % 12
+    // } else {
+    //   hours = hours || 12
+    // }
     
    const time = `${hours}:${addZero(mins)} ${amPm}`
       setTimeState(time)
