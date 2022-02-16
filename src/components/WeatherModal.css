@@ -1,0 +1,86 @@
+.forecast-container {
+  color: white;
+}
+
+.btn-modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailed-current {
+  width: 400px;
+  height: 200px;
+  background-color: rgba(0, 255, 255, 0.356);
+  margin: 20px;
+}
+
+.current-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.current-top {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.current-icon,
+.current-temp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+}
+
+.weather-description {
+  text-transform: capitalize;
+}
+
+.current-temp {
+  margin-left: 10px;
+  font-size: 3rem;
+}
+
+.hor-divider,
+.vert-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.hor-divider {
+  height: 2px;
+  width: 90%;
+}
+
+.vert-divider {
+  height: 180px;
+  width: 2px;
+  margin: 10px;
+}
+
+.current-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 6%;
+  font-weight: 400;
+  width: 48%;
+}
+
+.current-details span {
+  margin: 10px;
+}
+
+.weekly-forecast {
+  display: flex;
+  flex-wrap: nowrap;
+}
