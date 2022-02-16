@@ -1,0 +1,14 @@
+.item-container {
+  display: flex;
+  width: 150px;
+  height: 200px;
+  margin: 20px;
+  flex-direction: column;
+  background-color: rgba(0, 255, 255, 0.555);
+  color: #fff;
+}
+
+.main-temp {
+  font-size: 26px;
+}
+
