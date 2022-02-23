@@ -4,13 +4,29 @@ import MainSearch from "./components/MainSearch";
 import SideMenu from "./components/SideMenu";
 import Time from "./components/Time";
 import WeatherItem from "./components/WeatherItem";
-import ScreenSize from "./components/ScreenSize";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUnit, setIsUnit] = useState(true);
   const [is24hour, setIs24Hour] = useState(true);
   const [degrees, setDegrees] = useState("Celcius");
+  const [ windowWidth, getWindowWidth] = useState(window.innerWidth);
+
+  
+  // Screen Size for media queries
+    const setWidth = () => {
+      getWindowWidth(
+        window.innerWidth
+      )
+    }
+    
+    useEffect(() => {
+      window.addEventListener('resize', setWidth);
+      console.log(windowWidth)
+      return(() => {
+          window.removeEventListener('resize', setWidth);
+      })
+    }, [windowWidth])
 
   // Control of the side menu
 
@@ -37,14 +53,10 @@ function App() {
       console.log(is24hour);
     }
   };
-
-  
-
   
   
   return (
     <div className="App">
-    <ScreenSize />
       <SideMenu
         menuToggle={menuToggle}
         isOpen={isMenuOpen}
@@ -57,7 +69,9 @@ function App() {
         unitToggle={unitToggle}
         isUnit={isUnit}
         degrees={degrees}
+        width={windowWidth}
       />
+      <div style={ windowWidth > '600' ? {fontSize: '100px'} : {fontSize: '50px'}}>test</div>
     </div>
   );
 }
