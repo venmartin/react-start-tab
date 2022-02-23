@@ -26,68 +26,12 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import Stack from "@mui/material/Stack";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  maxWidth: "1300px",
-  width: "90%",
-  bgcolor: "#27272780",
-  border: "none",
-  borderRadius: 2,
-  boxShadow: 24,
-  p: 4,
-};
-
-const AntSwitch = styled(Switch)(({ theme }) => ({
-  width: 28,
-  height: 16,
-  padding: 0,
-  display: "flex",
-  "&:active": {
-    "& .MuiSwitch-thumb": {
-      width: 15,
-    },
-    "& .MuiSwitch-switchBase.Mui-checked": {
-      transform: "translateX(9px)",
-    },
-  },
-  "& .MuiSwitch-switchBase": {
-    padding: 2,
-    "&.Mui-checked": {
-      transform: "translateX(12px)",
-      color: "#fff",
-      "& + .MuiSwitch-track": {
-        opacity: 1,
-        backgroundColor: theme.palette.mode === "dark" ? "#00ffff75" : " #00ffff90",
-      },
-    },
-  },
-  "& .MuiSwitch-thumb": {
-    boxShadow: "0 2px 4px 0 rgb(0 35 11 / 20%)",
-    width: 12,
-    height: 12,
-    borderRadius: 6,
-    transition: theme.transitions.create(["width"], {
-      duration: 200,
-    }),
-  },
-  "& .MuiSwitch-track": {
-    borderRadius: 16 / 2,
-    opacity: 1,
-    backgroundColor:
-      theme.palette.mode === "dark"
-        ? "rgba(255,255,255,.35)"
-        : "rgba(0,0,0,.25)",
-    boxSizing: "border-box",
-  },
-}));
 
 const WeatherModal = ({
   isUnit,
   unitToggle,
   children,
+  width,
   id,
   cityName,
   temp,
@@ -112,6 +56,64 @@ const WeatherModal = ({
   const [iconImgCurrent, setIconImgCurrent] = useState();
   const [iconImgDaily, setIconImgDaily] = useState();
   // const [ isUnit, setIsUnit ] = useState(true)
+  
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    maxWidth: "1300px",
+    width: "90%",
+    bgcolor: "#27272780",
+    border: "none",
+    borderRadius: 2,
+    boxShadow: 24,
+    p: 4,
+  };
+  
+  const AntSwitch = styled(Switch)(({ theme }) => ({
+    width: 28,
+    height: 16,
+    padding: 0,
+    display: "flex",
+    "&:active": {
+      "& .MuiSwitch-thumb": {
+        width: 15,
+      },
+      "& .MuiSwitch-switchBase.Mui-checked": {
+        transform: "translateX(9px)",
+      },
+    },
+    "& .MuiSwitch-switchBase": {
+      padding: 2,
+      "&.Mui-checked": {
+        transform: "translateX(12px)",
+        color: "#fff",
+        "& + .MuiSwitch-track": {
+          opacity: 1,
+          backgroundColor: theme.palette.mode === "dark" ? "#00ffff75" : " #00ffff90",
+        },
+      },
+    },
+    "& .MuiSwitch-thumb": {
+      boxShadow: "0 2px 4px 0 rgb(0 35 11 / 20%)",
+      width: 12,
+      height: 12,
+      borderRadius: 6,
+      transition: theme.transitions.create(["width"], {
+        duration: 200,
+      }),
+    },
+    "& .MuiSwitch-track": {
+      borderRadius: 16 / 2,
+      opacity: 1,
+      backgroundColor:
+        theme.palette.mode === "dark"
+          ? "rgba(255,255,255,.35)"
+          : "rgba(0,0,0,.25)",
+      boxSizing: "border-box",
+    },
+  }));
 
   const fetchForecast = (city) => {
     axios
@@ -315,7 +317,13 @@ const WeatherModal = ({
                 // install Swiper modules
                 modules={[Navigation, Scrollbar, A11y]}
                 spaceBetween={10}
-                slidesPerView={5}
+                slidesPerView={
+                  width > '1200' ? 5 :
+                  width > '1000' ? 4 :
+                  width > '800' ? 3 :
+                  width > '600' ? 2 :
+                  width > '400' ? 1 : 1
+                }
                 navigation={{
                   color: "red",
                 }}
