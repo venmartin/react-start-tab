@@ -153,6 +153,7 @@ const WeatherModal = ({
         setWeather(response.data);
         let dataLat = response.data.coord.lat;
         let dataLon = response.data.coord.lon;
+        console.log(weather)
         weeklyForecast(dataLat, dataLon);
       })
       .catch(function (error) {
@@ -312,20 +313,20 @@ const WeatherModal = ({
                   </div>
                 </div>
               </div>
-              <div className="current-city">SYDNEY</div>
+              <div className="current-city">{weather.name}, {weather.sys.country}</div>
               <Swiper
                 // install Swiper modules
                 modules={[Navigation, Scrollbar, A11y]}
                 spaceBetween={10}
                 slidesPerView={
-                  width > '1200' ? 4 :
-                  width > '1000' ? 3 :
-                  width > '600' ? 2 :
-                  width > '400' ? 1 : 1
+                  width > '1200' ? 5 :
+                  width > '1000' ? 4 :
+                  width > '700' ? 3 :
+                  width > '600' ? 2 : 1
                 }
-                centeredSlides={
-                  width < '800' ? true : false
-                }
+                // centeredSlides={
+                //   width < '800' ? true : false
+                // }
                 navigation={{
                   color: "red",
                 }}
