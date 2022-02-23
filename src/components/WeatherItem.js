@@ -3,7 +3,7 @@ import axios from "axios";
 import "./WeatherItem.css";
 import WeatherModal from "./WeatherModal";
 
-const WeatherItem = ({ menuOpen, unitToggle, isUnit }) => {
+const WeatherItem = ({ menuOpen, unitToggle, isUnit, width }) => {
   const [ weather, setWeather ] = useState([]);
   const [ forecast, setForecast ] = useState([]);
   const [ longitude, setLongitude ] = useState();
@@ -61,7 +61,7 @@ const WeatherItem = ({ menuOpen, unitToggle, isUnit }) => {
       className={menuOpen ? "weather-item weather-item-open" : "weather-item"}
       // onClick={handleOpen}
     >
-    <WeatherModal cityName={cityName} isUnit={isUnit} unitToggle={unitToggle}>
+    <WeatherModal cityName={cityName} isUnit={isUnit} unitToggle={unitToggle} width={width}>
       <span className="weather-name">{weather ? weather.name : "no name"}</span>
       <span className="weather-temp">
         {isUnit
