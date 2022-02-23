@@ -21,16 +21,15 @@ const Time = () => {
       year = today.getFullYear()
       const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
       const months = ["January","February","March","April","May","June","July",
-"August","September","October","November","December"];
+      "August","September","October","November","December"];
     const clockHours = is24hour
       let amPm = is24hour ? (hours >= 12 ? 'PM' : 'AM') : ''
-
     // if(clockHours === true) {
     //   hours = hours % 12
     // } else {
     //   hours = hours || 12
     // }
-    
+      hours = hours % 12
    const time = `${hours}:${addZero(mins)} ${amPm}`
       setTimeState(time)
    const todayDate = `${days[day]} ${date} ${months[month]} ${year}`
