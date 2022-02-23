@@ -318,11 +318,13 @@ const WeatherModal = ({
                 modules={[Navigation, Scrollbar, A11y]}
                 spaceBetween={10}
                 slidesPerView={
-                  width > '1200' ? 5 :
-                  width > '1000' ? 4 :
-                  width > '800' ? 3 :
+                  width > '1200' ? 4 :
+                  width > '1000' ? 3 :
                   width > '600' ? 2 :
                   width > '400' ? 1 : 1
+                }
+                centeredSlides={
+                  width < '800' ? true : false
                 }
                 navigation={{
                   color: "red",
@@ -331,7 +333,6 @@ const WeatherModal = ({
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log("slide change")}
               >
-                {/* <div className="weekly-forecast"> */}
                 {forecast.daily &&
                   forecast.daily.map((item, i) => (
                     <SwiperSlide key={item.sunrise}>
