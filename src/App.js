@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Container } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import MainSearch from "./components/MainSearch";
 import SideMenu from "./components/SideMenu";
 import Time from "./components/Time";
 import WeatherItem from "./components/WeatherItem";
+import ScreenSize from "./components/ScreenSize";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,8 +38,13 @@ function App() {
     }
   };
 
+  
+
+  
+  
   return (
     <div className="App">
+    <ScreenSize />
       <SideMenu
         menuToggle={menuToggle}
         isOpen={isMenuOpen}
