@@ -71,7 +71,6 @@ function App() {
         degrees={degrees}
         width={windowWidth}
       />
-      <div style={ windowWidth > '600' ? {fontSize: '100px'} : {fontSize: '50px'}}>test</div>
     </div>
   );
 }
