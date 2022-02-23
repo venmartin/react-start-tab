@@ -1,3 +1,26 @@
+.close-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 0;  
+  height: 40px;
+  width: 40px;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+}
+
+.close-btn svg {
+  width: 30px;
+  height: 30px;
+}
+.close-btn:hover {
+  filter: sepia(29%) saturate(4776%) hue-rotate(83deg) brightness(103%) contrast(104%);
+}
+
+
 .forecast-container {
   color: white;
 }
@@ -126,11 +149,6 @@
   margin: 10px;
 }
 
-.weekly-forecast {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
 .swiper {
   height: 320px;
 }
@@ -142,4 +160,23 @@
 .swiper-button-prev,
 .swiper-button-next {
   color: #01ffc8 !important;
+  background-color: #2727275e;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.swiper-button-prev {
+
+}
+
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+
+}
+
+
+@media screen and (max-width: 1000px) {
+  .forecast-container {
+
+  }
 }
