@@ -73,6 +73,9 @@
 }
 
 .detailed-current {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   width: 400px;
   height: 200px;
   background-color: rgba(0, 255, 255, 0.288);
@@ -149,12 +152,28 @@
   margin: 10px;
 }
 
+.current-city {
+  display: flex;
+  justify-content: flex-end;
+  background-color: #27272780;
+  border-radius: 15px;
+}
+
+.current-city-title {
+  font-size: 1.5rem;
+  padding: 5px;
+  padding-right: 15px;
+}
+
 .swiper {
   height: 320px;
 }
 
-.swiper-wrapper {
-  
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
 }
 
 .swiper-button-prev,
@@ -178,5 +197,15 @@
 @media screen and (max-width: 1000px) {
   .forecast-container {
 
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .forecast-container {
+    
+  }
+  .detailed-current {
+    width: 100%;
+    margin: 0px;
   }
 }
