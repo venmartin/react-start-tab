@@ -25,7 +25,8 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import Stack from "@mui/material/Stack";
-
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 const WeatherModal = ({
   isUnit,
@@ -43,11 +44,22 @@ const WeatherModal = ({
   wind_speed,
 }) => {
   const [open, setOpen] = useState(false);
+  const [openAlert, setOpenAlert] = useState(false);
   const handleOpen = () => {
     setOpen(true);
     fetchForecast(cityName);
   };
+  const handleOpenAlert = () => {
+    setOpenAlert(true);
+  };
   const handleClose = () => setOpen(false);
+  const handleCloseAlert = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenAlert(false);
+  };
+
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
   const [weather, setWeather] = useState([]);
@@ -55,8 +67,9 @@ const WeatherModal = ({
   const [searchCity, setSearchCity] = useState("");
   const [iconImgCurrent, setIconImgCurrent] = useState();
   const [iconImgDaily, setIconImgDaily] = useState();
+  const [errorModal, setErrorModal] = useState(false);
   // const [ isUnit, setIsUnit ] = useState(true)
-  
+
   const style = {
     position: "absolute",
     top: "50%",
@@ -70,7 +83,11 @@ const WeatherModal = ({
     boxShadow: 24,
     p: 4,
   };
-  
+
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+
   const AntSwitch = styled(Switch)(({ theme }) => ({
     width: 28,
     height: 16,
@@ -91,7 +108,8 @@ const WeatherModal = ({
         color: "#fff",
         "& + .MuiSwitch-track": {
           opacity: 1,
-          backgroundColor: theme.palette.mode === "dark" ? "#00ffff75" : " #00ffff90",
+          backgroundColor:
+            theme.palette.mode === "dark" ? "#00ffff75" : " #00ffff90",
         },
       },
     },
@@ -153,12 +171,22 @@ const WeatherModal = ({
         setWeather(response.data);
         let dataLat = response.data.coord.lat;
         let dataLon = response.data.coord.lon;
-        console.log(weather)
+        console.log(weather);
         weeklyForecast(dataLat, dataLon);
       })
       .catch(function (error) {
         console.log(error);
+        setErrorModal(true);
+        errorCallback();
       });
+  };
+
+  const errorCallback = () => {
+    if (errorModal === true) {
+      handleOpenAlert();
+    } else {
+      setErrorModal(false);
+    }
   };
 
   const weeklyForecast = (lat, lon) => {
@@ -174,11 +202,7 @@ const WeatherModal = ({
         console.log(error);
       });
   };
-  let daily = "";
-  const today = (day) => {
-    let thisDay = new Date(day);
-    // let daily = thisDay.getDay()
-  };
+  
 
   useEffect(() => {}, []);
 
@@ -200,6 +224,20 @@ const WeatherModal = ({
       >
         <Fade in={open}>
           <Box sx={style}>
+            <Snackbar
+              open={openAlert}
+              autoHideDuration={6000}
+              onClose={handleCloseAlert}
+            >
+              <Alert
+                onClose={handleCloseAlert}
+                severity="error"
+                sx={{ width: "100%" }}
+              >
+                The location you have entered is unavailable. Please enter a
+                different location.
+              </Alert>
+            </Snackbar>
             <div className="close-btn">
               <CancelIcon onClick={handleClose} />
             </div>
@@ -216,11 +254,7 @@ const WeatherModal = ({
                         />
                       </Stack>
                     </FormGroup>
-                        {isUnit ? (
-                          <span>Metric</span>
-                        ) : (
-                          <span>Imperial</span>
-                        )}
+                    {isUnit ? <span>Metric</span> : <span>Imperial</span>}
                   </div>
                   <input
                     className="search-input"
@@ -313,16 +347,26 @@ const WeatherModal = ({
                   </div>
                 </div>
               </div>
-              <div className="current-city">{weather.name}, {weather.sys.country}</div>
+              <div className="current-city">
+                <span className="current-city-title">
+                  {weather ? weather.name : "Syd"},{" "}
+                  {weather.sys ? weather.sys.country : "Aus"}
+                </span>
+              </div>
               <Swiper
                 // install Swiper modules
                 modules={[Navigation, Scrollbar, A11y]}
                 spaceBetween={10}
                 slidesPerView={
-                  width > '1200' ? 5 :
-                  width > '1000' ? 4 :
-                  width > '700' ? 3 :
-                  width > '600' ? 2 : 1
+                  width > "1200"
+                    ? 5
+                    : width > "1000"
+                    ? 4
+                    : width > "700"
+                    ? 3
+                    : width > "600"
+                    ? 2
+                    : 1
                 }
                 // centeredSlides={
                 //   width < '800' ? true : false
@@ -336,7 +380,7 @@ const WeatherModal = ({
               >
                 {forecast.daily &&
                   forecast.daily.map((item, i) => (
-                    <SwiperSlide key={item.sunrise}>
+                    <SwiperSlide className='swiper-slide' key={item.sunrise}>
                       <ForecastItem
                         key={item.dt}
                         day={item.dt}
@@ -374,7 +418,13 @@ const WeatherModal = ({
                         }
                         icon={item.weather[0].icon}
                         description={item.weather[0].description}
-                        wind_speed={isUnit ? Math.round(item.wind_speed.toFixed(2)) + ' kmph' : Math.round(item.wind_speed.toFixed(2) * 0.62137119) + ' mph'}
+                        wind_speed={
+                          isUnit
+                            ? Math.round(item.wind_speed.toFixed(2)) + " kmph"
+                            : Math.round(
+                                item.wind_speed.toFixed(2) * 0.62137119
+                              ) + " mph"
+                        }
                       />
                     </SwiperSlide>
                   ))}
@@ -389,4 +439,3 @@ const WeatherModal = ({
 };
 
 export default WeatherModal;
-
