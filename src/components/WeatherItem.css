@@ -10,6 +10,8 @@
   margin: 20px;
   transition: ease-in-out 0.5s;
   cursor: pointer;
+  z-index: 5;
+  color: white;
 }
 
 .weather-item:hover {
@@ -61,6 +63,5 @@
 
   .weather-item-open {
     transform: translateX(-50%);
-    color: white;
   }
 }
