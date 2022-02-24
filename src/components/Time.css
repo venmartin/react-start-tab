@@ -8,6 +8,8 @@
   right: 0;
   padding: 20px;
   width: 300px;
+  color: white;
+  z-index: 6;
 }
 
 .clock,
@@ -22,4 +24,16 @@
 
 .date {
   font-size: 1.3rem;
+}
+
+@media screen and (max-width: 700px) {
+  .date-time-box {
+    right: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
 }
