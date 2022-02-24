@@ -10,23 +10,20 @@ function App() {
   const [isUnit, setIsUnit] = useState(true);
   const [is24hour, setIs24Hour] = useState(true);
   const [degrees, setDegrees] = useState("Celcius");
-  const [ windowWidth, getWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, getWindowWidth] = useState(window.innerWidth);
 
-  
   // Screen Size for media queries
-    const setWidth = () => {
-      getWindowWidth(
-        window.innerWidth
-      )
-    }
-    
-    useEffect(() => {
-      window.addEventListener('resize', setWidth);
-      console.log(windowWidth)
-      return(() => {
-          window.removeEventListener('resize', setWidth);
-      })
-    }, [windowWidth])
+  const setWidth = () => {
+    getWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", setWidth);
+    console.log(windowWidth);
+    return () => {
+      window.removeEventListener("resize", setWidth);
+    };
+  }, [windowWidth]);
 
   // Control of the side menu
 
@@ -53,10 +50,10 @@ function App() {
       console.log(is24hour);
     }
   };
-  
-  
+
   return (
     <div className="App">
+      <div className="header"></div>
       <SideMenu
         menuToggle={menuToggle}
         isOpen={isMenuOpen}
@@ -71,6 +68,7 @@ function App() {
         degrees={degrees}
         width={windowWidth}
       />
+      <div className="footer"></div>
     </div>
   );
 }
