@@ -9,6 +9,7 @@ import ViewCompactIcon from "@mui/icons-material/ViewCompact";
 
 import "./SideMenu.css";
 import { Box } from "@mui/system";
+import CustomSwitch from "./Switch";
 
 const SideMenu = ({ isOpen, menuToggle, timeToggle, degrees }) => {
   return (
@@ -19,7 +20,7 @@ const SideMenu = ({ isOpen, menuToggle, timeToggle, degrees }) => {
         }
       >
         <div className="menu-button" onClick={menuToggle}>
-          <MenuIcon />
+          <MenuIcon style={{fill: '#FFF'}}/>
         </div>
         <Container
           sx={{
@@ -46,7 +47,7 @@ const SideMenu = ({ isOpen, menuToggle, timeToggle, degrees }) => {
                   pr: "10px",
                 }}
               />
-              <span>Dock</span>
+              <span className='menu-option'>Dock</span>
             </div>
 
             <div className="menu-item">
@@ -57,8 +58,13 @@ const SideMenu = ({ isOpen, menuToggle, timeToggle, degrees }) => {
                   pr: "10px",
                 }}
               />
-              <span>Toggle Degrees</span>
-              <button onClick={degrees}> C | F </button>
+              <span className='menu-option'>Toggle Degrees</span>
+              <CustomSwitch
+                toggle={degrees}
+                textBefore={'°F'}
+                textAfter={'°C'}
+
+              />
             </div>
 
             {/* <div className='menu-item'>
@@ -80,7 +86,7 @@ const SideMenu = ({ isOpen, menuToggle, timeToggle, degrees }) => {
                   pr: "10px",
                 }}
               />
-              <span>Customization</span>
+              <span className='menu-option'>Customization</span>
               <ul>
                 <li></li>
               </ul>
@@ -94,7 +100,7 @@ const SideMenu = ({ isOpen, menuToggle, timeToggle, degrees }) => {
                   pr: "10px",
                 }}
               />
-              <span>News</span>
+              <span className='menu-option'>News</span>
             </div>
 
             <div className="menu-item">
@@ -105,7 +111,7 @@ const SideMenu = ({ isOpen, menuToggle, timeToggle, degrees }) => {
                   pr: "10px",
                 }}
               />
-              <span>Background Picker</span>
+              <span className='menu-option'>Background Picker</span>
               <ul>
                 <li></li>
               </ul>
