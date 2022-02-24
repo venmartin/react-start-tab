@@ -8,6 +8,7 @@
   height: 40px;
   align-items: center;
   justify-content: center;
+  z-index: 100;
 }
 
 
@@ -18,17 +19,20 @@
   left: 0;
   top: 0;
   height: 100%;
+  z-index: 100;
 }
 
 .side-menu-closed {
   transform: translateX(-300px);
   transition: ease-in-out 0.47s;
+  z-index: 100;
 }
 
 .side-menu-open {
   width: 300px;
   transform: translateX(0px);
   transition: ease-in-out 0.47s;
+  z-index: 100;
 }
 
 .menu-item {
@@ -36,7 +40,12 @@
   padding: 5px;
   align-items: center;
   height: 50px;
+  width: 230px;
+  justify-content: space-between;
 }
 
+.menu-option {
+  flex: 1;
+}
 /* Icons */
 
