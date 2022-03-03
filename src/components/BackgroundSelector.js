@@ -10,7 +10,9 @@ import "swiper/css/bundle";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-
+import BgImages from '../components/Images'
+import "./BackgroundSelector.css"
+import CancelIcon from "@mui/icons-material/Cancel";
 
 
 const BackgroundSelector = ({ bgSelect }) => {
@@ -21,7 +23,8 @@ const BackgroundSelector = ({ bgSelect }) => {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     maxWidth: "1300px",
-    width: "80%",
+    width: "90%",
+    height: '60%',
     bgcolor: "background.paper",
     border: "none",
     borderRadius: 2,
@@ -55,26 +58,37 @@ const BackgroundSelector = ({ bgSelect }) => {
             <span id="transition-modal-description" sx={{ mt: 2 }}>
               Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
             </span> */}
-
+            <div className="close-btn">
+              <CancelIcon onClick={handleClose} />
+            </div>
             <Swiper
                 // install Swiper modules
+                className='bgSwiper'
                 modules={[Navigation, EffectCoverflow, A11y, Pagination]}
                 effect={'coverflow'}
                 pagination={true}
                 centeredSlides={true}
-                spaceBetween={10}
+                spaceBetween={1}
                 slidesPerView={3}
-                navigation={{
-                  color: "red",
+                coverFlowEffect={{
+                  rotate: 150,
+                  stretch: 0,
+                  depth: 50,
+                  modifier: 1,
+                  slideShadows: true,
                 }}
+                // navigation={{
+                  
+                // }}
                 grabCursor={true}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log("slide change")}
               >
-                <SwiperSlide onClick={bgSelect}> Test 1 </SwiperSlide>
-                <SwiperSlide onClick={bgSelect}> Test 2 </SwiperSlide>
-                <SwiperSlide onClick={bgSelect}> Test 3 </SwiperSlide>
-                <SwiperSlide onClick={bgSelect}> Test 4 </SwiperSlide>
+              
+                {BgImages.map((imgSrc, index) => (
+                <SwiperSlide onClick={bgSelect} className='imgSlides'> <img src={imgSrc} key={index} /> </SwiperSlide>
+
+                ))}
 
               </Swiper>
           </Box>
