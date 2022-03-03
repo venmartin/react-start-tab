@@ -10,8 +10,11 @@ import ViewCompactIcon from "@mui/icons-material/ViewCompact";
 import "./SideMenu.css";
 import { Box } from "@mui/system";
 import CustomSwitch from "./Switch";
+import BackgroundSelector from "./BackgroundSelector";
 
 const SideMenu = ({ isOpen, menuToggle, timeToggle, degrees }) => {
+  
+  
   return (
     <>
       <div
@@ -111,7 +114,9 @@ const SideMenu = ({ isOpen, menuToggle, timeToggle, degrees }) => {
                   pr: "10px",
                 }}
               />
-              <span className='menu-option'>Background Picker</span>
+              <span className='menu-option'>
+                <BackgroundSelector />
+              </span>
               <ul>
                 <li></li>
               </ul>
