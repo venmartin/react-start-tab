@@ -54,10 +54,9 @@ export default function CustomSwitch({ toggle, textBefore, textAfter }) {
         flexBasis: 1,
         justifyContent: "space-between",
         alignItems: "center",
-        
       }}
     >
-      <span style={{paddingRight: '5px'}}>
+      <span style={{ paddingRight: "5px", fontSize: ".8rem" }}>
         {textBefore}
         {""}
       </span>
@@ -66,7 +65,9 @@ export default function CustomSwitch({ toggle, textBefore, textAfter }) {
         defaultChecked
         inputProps={{ "aria-label": "ant design" }}
       />
-      <span style={{paddingLeft: '5px'}}>{textAfter}</span>
+      <span style={{ paddingLeft: "5px", fontSize: ".8rem" }}>
+        {textAfter}
+      </span>
     </div>
   );
 }
