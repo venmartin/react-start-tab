@@ -41,6 +41,10 @@ function App() {
     }
   };
 
+  const handleBgClick = () => {
+    console.log('this item has been clicked')
+  }
+
   // End Side Menu
 
   // Control of the clock toggle for 12h to 24h.
@@ -58,6 +62,7 @@ function App() {
         menuToggle={menuToggle}
         isOpen={isMenuOpen}
         degrees={unitToggle}
+        bgClick={handleBgClick}
       />
       <MainSearch />
       <Time />
