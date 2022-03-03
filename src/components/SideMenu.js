@@ -12,7 +12,7 @@ import { Box } from "@mui/system";
 import CustomSwitch from "./Switch";
 import BackgroundSelector from "./BackgroundSelector";
 
-const SideMenu = ({ isOpen, menuToggle, timeToggle, degrees }) => {
+const SideMenu = ({ isOpen, menuToggle, timeToggle, degrees, bgClick }) => {
   
   
   return (
@@ -115,7 +115,9 @@ const SideMenu = ({ isOpen, menuToggle, timeToggle, degrees }) => {
                 }}
               />
               <span className='menu-option'>
-                <BackgroundSelector />
+                <BackgroundSelector
+                  bgSelect={bgClick}
+                 />
               </span>
               <ul>
                 <li></li>
