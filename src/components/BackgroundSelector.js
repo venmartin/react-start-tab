@@ -13,7 +13,7 @@ import "swiper/css/scrollbar";
 
 
 
-const BackgroundSelector = ({ openBg }) => {
+const BackgroundSelector = ({ bgSelect }) => {
   
   const style = {
     position: 'absolute',
@@ -32,7 +32,6 @@ const BackgroundSelector = ({ openBg }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  
   
   return (
     <>
@@ -72,10 +71,10 @@ const BackgroundSelector = ({ openBg }) => {
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log("slide change")}
               >
-                <SwiperSlide> Test 1 </SwiperSlide>
-                <SwiperSlide> Test 2 </SwiperSlide>
-                <SwiperSlide> Test 3 </SwiperSlide>
-                <SwiperSlide> Test 4 </SwiperSlide>
+                <SwiperSlide onClick={bgSelect}> Test 1 </SwiperSlide>
+                <SwiperSlide onClick={bgSelect}> Test 2 </SwiperSlide>
+                <SwiperSlide onClick={bgSelect}> Test 3 </SwiperSlide>
+                <SwiperSlide onClick={bgSelect}> Test 4 </SwiperSlide>
 
               </Swiper>
           </Box>
